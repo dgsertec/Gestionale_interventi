@@ -1,0 +1,27 @@
+GESTIONALE INTERVENTI — V40
+
+Base: V39 con tabella interventi aggiornata da Intervento(2).csv.
+Questa versione introduce miglioramenti all'Anagrafica senza ricostruire o sovrascrivere i dati esistenti.
+
+MIGLIORAMENTI ANAGRAFICA
+- Viste separate: tutte le anagrafiche, clienti collegati ai lavori, filiali/sottoclienti.
+- Ricerca multi-parola su nome, città, indirizzo, frazionario/codice e ID Ninox.
+- Filtri per cliente/ente e città.
+- Ordinamento alfabetico per nome, città e indirizzo.
+- Conteggi di lavori e interventi collegati.
+- Scheda anagrafica con storico degli interventi più recenti.
+- Controllo duplicati prima del salvataggio.
+- Eliminazione bloccata quando la voce è collegata a lavori o interventi.
+- Selettore del cliente nei nuovi lavori limitato alle anagrafiche cliente, mantenendo i clienti già usati nei lavori.
+- Cache service worker aggiornata per evitare di servire la vecchia interfaccia.
+
+DATI
+- La versione mantiene il database V39 incorporato, inclusi lavori, interventi, spese, pagamenti e identificativi Ninox.
+- Nessun pagamento fittizio creato e nessuno stato lavoro modificato automaticamente.
+
+PUBBLICAZIONE
+1. Esportare un backup JSON dal gestionale attuale.
+2. Estrarre tutti i file dello ZIP nella root del repository GitHub Pages, sostituendo i file precedenti.
+3. Salvare/committare le modifiche.
+4. Ricaricare il gestionale. Se necessario chiudere e riaprire la PWA o fare un aggiornamento forzato della pagina.
+5. Se occorre importare i dati V39 nel dispositivo, usare Altro > Sostituisci con database ricomposto solo dopo aver esportato il backup. Questa operazione sostituisce i dati locali con il database incorporato nello ZIP.
