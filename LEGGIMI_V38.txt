@@ -1,0 +1,21 @@
+DATABASE RICOMPOSTO V38 — PAGAMENTI AGGIUNTI
+
+Origine: Interventi.xlsx, LAVORI - tabella.xlsx, Uscite.xlsx, Anagrafica banche(1).csv e Pagamenti(1).csv.
+Clienti/anagrafiche: 268 (158 record anagrafica originali)
+Categorie ricavate dai dati: 15
+Lavori: 218
+Interventi: 1997
+Spese: 551
+Spese associate a lavoro/intervento: 433
+Spese senza riferimenti sufficienti: 118
+Pagamenti dettagliati: 71, tutti associati tramite il numero # Lavoro
+Pagamenti con importo valorizzato: 69; somma importi conosciuti: € 38.755,00
+Pagamenti senza importo: 2 (conservati come importo non indicato, senza inventare valori)
+Link intervento: 1290
+N° Rapporto valorizzato: 1272
+TK Intesa valorizzato: 343
+Lavori con differenza tra totale originale e somma interventi: 19
+
+Calcoli pagamenti: le operazioni importate sono marcate come dettagli Ninox e non vengono sommate due volte al riepilogo pagato del lavoro. Per il totale incassato si confronta il riepilogo originale con la somma dei dettagli importati e si usa il maggiore; i nuovi pagamenti inseriti manualmente si aggiungono separatamente. Le due registrazioni prive di importo sono visibili nella scheda lavoro con una nota.
+
+Importazione: pubblicare i file nella directory principale GitHub Pages; aprire Altro e premere “Sostituisci con database ricomposto”. La procedura chiede conferma e salva un backup locale prima della sostituzione. Prima dell'importazione esportare comunque un backup JSON dal gestionale.
