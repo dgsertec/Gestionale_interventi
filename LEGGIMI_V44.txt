@@ -1,0 +1,35 @@
+GESTIONALE INTERVENTI – V44
+Home ripristinata, ricerca globale corretta, azzeramento filtri, UI coerente e sincronizzazione automatica Supabase
+
+INSTALLAZIONE SU GITHUB PAGES
+1. Apri il gestionale attuale e, se vuoi conservare una copia, usa manualmente Altro > Esporta backup JSON.
+2. Scarica ed estrai lo ZIP V44.
+3. Carica i file direttamente nella cartella principale (root) del repository GitHub Pages, sostituendo i file omonimi. Includi supabase_schema.sql e questo file di istruzioni.
+4. Salva/effettua il commit e attendi la pubblicazione.
+5. Chiudi completamente e riapri la PWA. La cache del service worker è stata aggiornata.
+6. Non usare “Sostituisci con database ricomposto”: l'aggiornamento dell'interfaccia non richiede di reimportare il database incorporato.
+
+MODIFICHE V44
+- Home: ripristinata la sezione “Ultimi interventi”, con gli ultimi 10 interventi ordinati per data e numero.
+- Home: aggiunto “Azzera filtri Home”, che azzera anno, mese, cliente/sottocliente, stato lavoro e stato pagamento e disattiva la memorizzazione dei filtri.
+- Anagrafica: aggiunto “Azzera filtri anagrafica” per ricerca, cliente/ente e città; aggiunto anche l'azzeramento della ricerca nella sezione categorie.
+- Ricerca globale: ripristinati i renderer mancanti delle schede intervento, aggiunta gestione degli errori e migliorata la risposta agli eventi di input.
+- Interfaccia: uniformati titoli di sezione, spaziature e altezza minima dei pulsanti.
+- Supabase: sincronizzazione automatica dopo l'accesso. Le modifiche locali vengono inviate al cloud dopo una breve pausa; gli aggiornamenti remoti vengono ricevuti tramite Realtime.
+- Backup/ripristino JSON: solo manuale. Nessun backup viene scaricato o creato automaticamente durante sincronizzazione, unione, pulizia o cancellazione.
+
+CONFIGURARE LA SINCRONIZZAZIONE AUTOMATICA
+1. Crea un progetto su https://supabase.com/ se non ne hai già uno.
+2. Nel progetto, apri SQL Editor e incolla/esegui il contenuto di supabase_schema.sql. Lo script crea la tabella, le policy RLS e prova ad abilitare Realtime per la tabella.
+3. In Project Settings > API (o Connect), copia Project URL e la chiave pubblica anon/publishable. Non inserire mai una service_role/secret key nell'app.
+4. Nel gestionale apri Altro > Sincronizzazione Supabase, inserisci URL e chiave e premi “Salva configurazione”.
+5. Inserisci email e password e premi “Crea account” oppure “Accedi”. Se Supabase richiede conferma email, conferma prima di accedere.
+6. Al primo collegamento, se ci sono già dati sia in locale sia nel cloud, il gestionale chiede quale versione mantenere: OK scarica quella cloud sul dispositivo; Annulla mantiene i dati locali e li carica nel cloud. Se non esiste ancora un record cloud, i dati locali vengono caricati.
+7. Sugli altri dispositivi usa lo stesso URL, chiave pubblica e account. Dopo l'accesso, la sincronizzazione avviene automaticamente.
+
+IMPORTANTE
+- Se il browser segnala errori Realtime, controlla in Supabase che la tabella public.gestionale_sync sia inclusa nella publication supabase_realtime. L'invio delle modifiche locali continua a funzionare, ma gli aggiornamenti istantanei dagli altri dispositivi potrebbero non arrivare finché Realtime non è abilitato.
+- Se ci sono modifiche locali non ancora sincronizzate quando il gestionale si ricollega, verrà chiesto se usare i dati cloud oppure mantenere/caricare quelli locali.
+- La sincronizzazione è basata su un unico record JSON per account: in caso di modifiche contemporanee su due dispositivi, prevale l'ultima versione sincronizzata. Evita di modificare contemporaneamente gli stessi dati da più dispositivi.
+- La sincronizzazione trasferisce i dati JSON (clienti, lavori, interventi, spese, pagamenti, categorie e magazzino), non i file binari degli allegati né le foto in IndexedDB. L'impostazione esistente di Google Drive non viene modificata.
+- Il backup e il ripristino JSON sono sempre operazioni manuali dalla sezione Altro. La sincronizzazione cloud non è un backup storico: conserva l'ultima versione sincronizzata.
