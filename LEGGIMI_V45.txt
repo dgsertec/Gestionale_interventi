@@ -1,0 +1,19 @@
+GESTIONALE INTERVENTI – V45
+Ricerca globale rimossa; ricerca dedicata in Lavori; ultimi interventi dettagliati in Home.
+
+MODIFICHE
+- Rimosso il campo di ricerca globale in alto, che generava errore.
+- In Lavori è presente una ricerca che filtra i lavori tramite cliente/sottocliente, richiesta, lavoro svolto e descrizioni/importi delle spese collegate.
+- La ricerca lavori si combina con i filtri anno/mese; il pulsante “Azzera filtri” azzera testo e periodo.
+- In Home “Ultimi interventi” mostra i 10 interventi più recenti con cliente, sottocliente, data, importo e richiesta. Toccando una scheda si apre la modifica dell’intervento.
+- La sincronizzazione Supabase, il magazzino e le altre funzioni V44 sono mantenuti.
+
+INSTALLAZIONE GITHUB PAGES
+1. Esporta manualmente un backup JSON se desideri conservarlo.
+2. Estrai lo ZIP e sostituisci i file nella root del repository GitHub Pages.
+3. Salva/effettua il commit e attendi la pubblicazione.
+4. Chiudi completamente e riapri la PWA su iPhone.
+5. Non reimportare il database incorporato: l’aggiornamento non richiede di sostituire i dati locali.
+
+NOTA
+La ricerca nelle spese legge le spese collegate agli interventi e quelle associate direttamente al lavoro tramite jobId/workId, quando tali riferimenti sono presenti nei dati. La sintassi JavaScript è stata verificata; non è stato possibile collaudare l’app su un iPhone reale.
