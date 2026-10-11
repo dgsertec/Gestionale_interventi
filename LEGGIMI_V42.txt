@@ -1,0 +1,18 @@
+GESTIONALE INTERVENTI – V42
+
+Installazione su GitHub Pages
+1. Scarica ed estrai lo ZIP.
+2. Carica i file contenuti direttamente nella cartella principale (root) del repository GitHub Pages, sostituendo i file omonimi.
+3. Salva/effettua il commit delle modifiche e attendi l’aggiornamento di GitHub Pages.
+4. Chiudi e riapri la web app. Se non vedi subito le novità, chiudi completamente la PWA e riaprila per aggiornare la cache.
+
+ATTENZIONE AI DATI
+- Questa versione aggiorna l’interfaccia e mantiene il database Ninox incorporato presente nella V41.
+- Non premere “Sostituisci con database ricomposto” dopo l’aggiornamento: quella funzione sostituisce i dati attualmente salvati sul dispositivo.
+- Il database operativo resta locale al browser/dispositivo, come nelle versioni precedenti. Prima di modifiche importanti usa “Esporta backup JSON”.
+- Le foto del magazzino e gli allegati sono conservati nel database allegati locale (IndexedDB) del dispositivo. Il backup JSON esporta i dati descrittivi, ma non include i file binari delle foto/allegati.
+
+NUOVE FUNZIONI V42
+1. Anagrafica: tieni premuta una voce per circa mezzo secondo per selezionarla. Tocca altre voci per aggiungerle o rimuoverle dalla selezione. Compare il comando “Unisci interventi”. Inserisci i dati della nuova anagrafica e conferma. Prima dell’operazione viene avviato il download di un backup JSON.
+2. L’unione assegna alla nuova anagrafica gli interventi collegati alle anagrafiche selezionate, compresi gli interventi dei lavori direttamente intestati a quelle anagrafiche. I record originali restano nell’anagrafica; i clienti dei lavori, i pagamenti e le spese non vengono modificati.
+3. Magazzino: nuova sezione con nome articolo, quantità, magazzino (Rec System, AsigInt, dg, altro), ubicazione, stato, foto e note. Se si seleziona AsigInt viene mostrato anche il campo Postazione. Gli articoli sono mostrati in una tabella scorrevole con modifica ed eliminazione.
